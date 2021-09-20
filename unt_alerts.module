@@ -1,0 +1,40 @@
+<?php
+
+/**
+ * @file
+ * Contains unt_events.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function unt_alerts_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the unt_events module.
+    case 'help.page.unt_alerts':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Displays emergency communication from the campus alerts site') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function unt_alerts_theme($existing, $type, $theme, $path) {
+  return [
+    'unt_alerts_block' => [
+      'variables' => [
+        'headline' => NULL,
+        'content' => NULL,
+      ],
+      'render element' => 'children',
+    ],
+  ];
+}
+
